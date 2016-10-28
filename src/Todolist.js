@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, ScrollView, Text, View, Image, TouchableHighlight,
-  Dimensions, RefreshControl, LayoutAnimation, Animated } from 'react-native';
+  Dimensions, RefreshControl, LayoutAnimation, Animated, UIManager } from 'react-native';
 import { Font } from 'exponent';
 import P from 'P';
 import { observer } from 'mobx-react/native';
@@ -21,10 +21,15 @@ const todoAnim = {
   },
 };
 
-
-
 @observer
 export default class extends Component {
+  
+  constructor(super) {
+    super(props);
+    UIManager.setLayoutAnimationEnabledExperimental && 
+      UIManager.setLayoutAnimationEnabledExperimental(true);
+  }
+    
   async componentWillMount() {
     await Font.loadAsync({
       'lato-regular': require('./assets/Lato-Regular.ttf'),

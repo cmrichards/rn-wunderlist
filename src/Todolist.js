@@ -23,13 +23,13 @@ const todoAnim = {
 
 @observer
 export default class extends Component {
-  
-  constructor(super) {
+
+  constructor(props) {
     super(props);
-    UIManager.setLayoutAnimationEnabledExperimental && 
+    UIManager.setLayoutAnimationEnabledExperimental &&
       UIManager.setLayoutAnimationEnabledExperimental(true);
   }
-    
+
   async componentWillMount() {
     await Font.loadAsync({
       'lato-regular': require('./assets/Lato-Regular.ttf'),
@@ -67,11 +67,6 @@ export default class extends Component {
           }}>
             <ScrollView
               style={styles.content}
-              refreshControl={<RefreshControl 
-                refreshing={store.refreshing} 
-                onRefresh={() => store.refresh()}
-                tintColor={'#fff'}
-              />}
               keyboardDismissMode={'on-drag'}
               keyboardShouldPersistTaps={true}
               scrollEnabled={store.scrollable}
